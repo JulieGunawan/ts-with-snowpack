@@ -1,4 +1,4 @@
-import { v4 as uuidV4 } from 'uuid';
+import { v4 as uuidV4 } from "uuid";
 
 // console.log(uuidV4());
 type Task = {
@@ -8,14 +8,14 @@ type Task = {
   createdAt: Date;
 };
 
-const list = document.querySelector<HTMLUListElement>('#list');
-const form = document.querySelector<HTMLFormElement>('#new-task-form');
-const input = document.querySelector<HTMLInputElement>('#new-task-input');
+const list = document.querySelector<HTMLUListElement>("#list");
+const form = document.querySelector<HTMLFormElement>("#new-task-form");
+const input = document.querySelector<HTMLInputElement>("#new-task-input");
 
-form?.addEventListener('submit', (e) => {
+form?.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (input?.value == '' || input?.value == null) {
+  if (input?.value == "" || input?.value == null) {
     return;
   }
 
@@ -30,7 +30,7 @@ form?.addEventListener('submit', (e) => {
 });
 
 function addListItem(task: Task) {
-  const item = document.createElement('li');
-  const label = document.createElement('label');
+  const item = document.createElement("li");
+  const label = document.createElement("label");
   const checkbox = document;
 }
