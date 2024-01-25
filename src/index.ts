@@ -11,6 +11,8 @@ type Task = {
 const list = document.querySelector<HTMLUListElement>("#list");
 const form = document.querySelector<HTMLFormElement>("#new-task-form");
 const input = document.querySelector<HTMLInputElement>("#new-task-input");
+const tasks: Task[] = loadTasks();
+tasks.forEach((task) => addListItem(task));
 
 form?.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -22,11 +24,14 @@ form?.addEventListener("submit", (e) => {
   const newTask: Task = {
     id: uuidV4(),
     title: input.value,
-    completed: true,
+    completed: false,
     createdAt: new Date(),
   };
+  console.log(newTask);
+  tasks.push(newTask);
 
   addListItem(newTask);
+  saveTasks();
   input.value = "";
 });
 
@@ -36,7 +41,23 @@ function addListItem(task: Task) {
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.checked = task.completed;
+  checkbox.addEventListener("change", () => {
+    task.completed = checkbox.checked;
+    saveTasks();
+  });
   label.append(checkbox, task.title);
   item.append(label);
   list?.append(item);
+}
+
+function saveTasks() {
+  localStorage.setItem("TASKS", JSON.stringify(tasks));
+}
+
+function loadTasks(): Task[] {
+  //JSON parse only accepts string and not null, so we need to break it down
+  const taskJSON = localStorage.getItem("TASKS");
+  if (taskJSON == null) return [];
+  //but JSON.parse could return anything, if parameter is not null
+  return JSON.parse(taskJSON);
 }
