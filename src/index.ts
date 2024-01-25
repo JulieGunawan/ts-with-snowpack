@@ -27,6 +27,7 @@ form?.addEventListener("submit", (e) => {
   };
 
   addListItem(newTask);
+  input.value = "";
 });
 
 function addListItem(task: Task) {
