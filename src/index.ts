@@ -27,7 +27,6 @@ form?.addEventListener("submit", (e) => {
     completed: false,
     createdAt: new Date(),
   };
-  console.log(newTask);
   tasks.push(newTask);
 
   addListItem(newTask);
