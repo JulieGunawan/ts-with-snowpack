@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# ts-with-snowpack
-=======
 # New Project
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
@@ -25,4 +22,3 @@ Your app is ready to be deployed!
 ### Q: What about Eject?
 
 No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
->>>>>>> af686f5 (initial commit)
