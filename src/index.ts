@@ -22,7 +22,7 @@ form?.addEventListener("submit", (e) => {
   const newTask: Task = {
     id: uuidV4(),
     title: input.value,
-    completed: false,
+    completed: true,
     createdAt: new Date(),
   };
 
@@ -32,5 +32,10 @@ form?.addEventListener("submit", (e) => {
 function addListItem(task: Task) {
   const item = document.createElement("li");
   const label = document.createElement("label");
-  const checkbox = document;
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.checked = task.completed;
+  label.append(checkbox, task.title);
+  item.append(label);
+  list?.append(item);
 }
